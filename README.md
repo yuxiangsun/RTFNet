@@ -8,7 +8,7 @@ This is the official pytorch implementation of [RTFNet: RGB-Thermal Fusion Netwo
  
 ## Introduction
 
-RTFNet is a data-fusion network that consists of two encoders and one decoder.
+RTFNet is a data-fusion network for semantic segmentation. It consists of two encoders and one decoder. 
  
 ## Dataset
  
