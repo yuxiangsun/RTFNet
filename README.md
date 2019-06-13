@@ -4,7 +4,7 @@ RTFNet: RGB-Thermal Fusion Network for Semantic Segmentation of Urban Scenes
 
 <img src="doc/network.png" width="900px"/>
  
-This is the official pytorch implementation of [RTFNet: RGB-Thermal Fusion Network for Semantic Segmentation of Urban Scenes](http://eeyxsun.people.ust.hk/docs/RAL2019_rtfnet.pdf) (IEEE RAL). Codes are heavly borrowed from MFNet(https://github.com/haqishen/MFNet-pytorch).
+This is the official pytorch implementation of [RTFNet: RGB-Thermal Fusion Network for Semantic Segmentation of Urban Scenes](http://eeyxsun.people.ust.hk/docs/RAL2019_rtfnet.pdf) (IEEE RAL). The util, test and demo codes are heavly borrowed from [MFNet](https://github.com/haqishen/MFNet-pytorch).
  
 ## Introduction
 
