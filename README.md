@@ -42,6 +42,7 @@ $ python run_demo.py
 
 If you use RTFNet in an academic work, please cite:
 
+```
 @ARTICLE{sun2019rtfnet,
 author={Yuxiang Sun and Weixun Zuo and Ming Liu}, 
 journal={{IEEE Robotics and Automation Letters}}, 
@@ -53,6 +54,7 @@ pages={2576-2583},
 doi={10.1109/LRA.2019.2904733}, 
 ISSN={2377-3766}, 
 month={July},}
+```
 
 ## Demos
 
