@@ -12,7 +12,7 @@ RTFNet is a data-fusion network that consists of two encoders and one decoder.
  
 ## Dataset
  
-The original dataset can be downloaded from MFNet project home [page](https://www.mi.t.u-tokyo.ac.jp/static/projects/mil_multispectral/), but you are encouraged to download our preprocessed dataset from [here](http://gofile.me/4jm56/CfukComo1) .
+The original dataset can be downloaded from the MFNet project [page](https://www.mi.t.u-tokyo.ac.jp/static/projects/mil_multispectral/), but you are encouraged to download our preprocessed dataset from [here](http://gofile.me/4jm56/CfukComo1) .
 
 ## Pretrained weights
 
