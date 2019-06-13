@@ -26,14 +26,15 @@ RTFNet 152: http://gofile.me/4jm56/ODE2fxJKG
 $ cd ~ 
 $ git clone https://github.com/yuxiangsun/RTFNet.git
 $ cd RTFNet/dataset
-$ download our preprocessed dataset in this folder
+$ (download our preprocessed dataset in this folder)
 $ cd RTFNet/weights_backup/RTFNet_50
-$ download the RTFNet_50 weight in this folder
+$ (download the RTFNet_50 weight in this folder)
 $ cd RTFNet/weights_backup/RTFNet_152
-$ download the RTFNet_152 weight in this folder
+$ (download the RTFNet_152 weight in this folder)
 $ docker build -t rtfnet_docker_image .
 $ nvidia-docker run -it --shm-size 8G --name rtfnet_docker -v ~/RTFNet_PyTorch:/opt/project rtfnet_docker_image
-$ cd /opt/project (currently, you should be in the docker)
+$ (currently, you should be in the docker)
+$ cd /opt/project 
 $ python test.py
 $ python run_demo.py
 ```
