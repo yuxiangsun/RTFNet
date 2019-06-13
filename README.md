@@ -1,5 +1,43 @@
-### RTFNet: RGB-Thermal Fusion Network for Semantic Segmentation of Urban Scenes
-##### The code will be released soon.
+# RTFNet-pytorch
 
-Citation:
-Yuxiang Sun, Weixun Zuo and Ming Liu, "RTFNet: RGB-Thermal Fusion Network for Semantic Segmentation of Urban Scenes," IEEE Robotics and Automation Letters, vol. 4, no. 3, pp. 2576–2583, July 2019. DOI: https://doi.org/10.1109/LRA.2019.2904733
+RTFNet: RGB-Thermal Fusion Network for Semantic Segmentation of Urban Scenes
+
+<img src="doc/network.png" width="900px"/>
+
+<img src="doc/demo.png" width="900px"/>
+ 
+This is official pytorch implementation of [RTFNet: RGB-Thermal Fusion Network for Semantic Segmentation of Urban Scenes](http://eeyxsun.people.ust.hk/docs/RAL2019_rtfnet.pdf) (IEEE RAL). Codes are heavly borrowed from MFNet(https://github.com/haqishen/MFNet-pytorch).
+ 
+## Introduction
+
+RTFNet is a data-fusion network that consists of two encoders and one decoder.
+ 
+## Dataset
+ 
+The original dataset can be downloaded in MFNet project home [page](https://www.mi.t.u-tokyo.ac.jp/static/projects/mil_multispectral/). [Here](http://gofile.me/4jm56/rUAHlGwbB) is our preprocessed dataset.
+
+## Pretrained weights
+RTFNet 50: http://gofile.me/4jm56/9VygmBgPR
+RTFNet 152: http://gofile.me/4jm56/ODE2fxJKG
+
+## Usage
+
+* Assume you have nvidia docker installed. 
+```
+$ cd ~ 
+$ git clone https://github.com/yuxiangsun/RTFNet.git
+$ cd RTFNet/dataset
+$ download the preprocessed dataset in this folder
+$ cd RTFNet/weights_backup/RTFNet_50
+$ download the RTFNet_50 weight in this folder
+$ cd RTFNet/weights_backup/RTFNet_152
+$ download the RTFNet_152 weight in this folder
+$ docker build -t rtfnet_docker_image .
+$ nvidia-docker run -it --shm-size 8G --name rtfnet_docker -v ~/RTFNet_PyTorch:/opt/project rtfnet_docker_image
+$ cd /opt/project (currently, you should be in the docker)
+$ python test.py
+$ python run_demo.py
+```
+
+## Contact:
+sun.yuxiang@outlook.com
