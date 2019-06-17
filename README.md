@@ -2,7 +2,7 @@
 
 This is the official pytorch implementation of [RTFNet: RGB-Thermal Fusion Network for Semantic Segmentation of Urban Scenes](http://eeyxsun.people.ust.hk/docs/RAL2019_rtfnet.pdf) (IEEE RAL). The util, test and demo codes are heavily borrowed from [MFNet](https://github.com/haqishen/MFNet-pytorch). 
 
-Note that our implementations of the evaluation metrics (Acc and IoU), are different from those in MFNet. In addition, we consider the unlabelled class when computing the metrics. We think that it is fine to directly import our results (including the compared networks) in your paper if you use our `test.py` to evaluate your model.
+Note that our implementations of the evaluation metrics (Acc and IoU) are different from those in MFNet. In addition, we consider the unlabelled class when computing the metrics. We think that it is fine to directly import our results (including the compared networks) in your paper if you use our `test.py` to evaluate your model.
 
 <img src="doc/network.png" width="900px"/>
   
