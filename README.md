@@ -55,6 +55,7 @@ $ mkdir ~/RTFNet/dataset
 $ cd ~/RTFNet/dataset
 $ (download our preprocessed dataset.zip in this folder)
 $ unzip -d .. dataset.zip
+$ cd ~/RTFNet
 $ docker build -t rtfnet_docker_image .
 $ nvidia-docker run -it --shm-size 8G -p 1234:6006 --name rtfnet_docker -v ~/RTFNet:/opt/project rtfnet_docker_image
 $ (currently, you should be in the docker)
