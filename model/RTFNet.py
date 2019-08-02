@@ -1,5 +1,5 @@
 # coding:utf-8
-# By Yuxiang Sun, Nov. 8, 2018
+# By Yuxiang Sun, Aug. 2, 2019
 # Email: sun.yuxiang@outlook.com
 
 import torch
@@ -59,10 +59,10 @@ class RTFNet(nn.Module):
 
         ########  DECODER  ########
 
-        self.deconv1 = self._make_transpose_layer(TransBottleneck, self.inplanes/2, 2, stride=2)
-        self.deconv2 = self._make_transpose_layer(TransBottleneck, self.inplanes/2, 2, stride=2)
-        self.deconv3 = self._make_transpose_layer(TransBottleneck, self.inplanes/2, 2, stride=2)
-        self.deconv4 = self._make_transpose_layer(TransBottleneck, self.inplanes/2, 2, stride=2)
+        self.deconv1 = self._make_transpose_layer(TransBottleneck, self.inplanes//2, 2, stride=2) # using // for python 3.6
+        self.deconv2 = self._make_transpose_layer(TransBottleneck, self.inplanes//2, 2, stride=2) # using // for python 3.6
+        self.deconv3 = self._make_transpose_layer(TransBottleneck, self.inplanes//2, 2, stride=2) # using // for python 3.6
+        self.deconv4 = self._make_transpose_layer(TransBottleneck, self.inplanes//2, 2, stride=2) # using // for python 3.6
         self.deconv5 = self._make_transpose_layer(TransBottleneck, n_class, 2, stride=2)
  
     def _make_transpose_layer(self, block, planes, blocks, stride=1):
