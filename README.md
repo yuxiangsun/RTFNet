@@ -25,7 +25,7 @@ RTFNet 152: http://gofile.me/4jm56/ODE2fxJKG
 
 ## Usage
 
-* Assume you have nvidia docker installed. To reproduce our results:
+* Assume you have nvidia docker installed. To reproduce our results (please mannully change RTFNet variants in the model code):
 ```
 $ cd ~ 
 $ git clone https://github.com/yuxiangsun/RTFNet.git
@@ -47,7 +47,7 @@ $ python3 test.py
 $ python3 run_demo.py
 ```
 
-* To train RTFNet (please mannully change RTFNet variants in the model file):
+* To train RTFNet (please mannully change RTFNet variants in the model code):
 ```
 $ cd ~ 
 $ git clone https://github.com/yuxiangsun/RTFNet.git
