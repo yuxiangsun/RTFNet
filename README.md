@@ -90,6 +90,8 @@ month={July},}
 <img src="doc/demo.png" width="900px"/>
 
 ## Contact
+
 sun.yuxiang@outlook.com
+
 http://eeyxsun.people.ust.hk/
 
