@@ -1,4 +1,7 @@
 # coding:utf-8
+# Modified by Yuxiang Sun, Aug. 2, 2019
+# Email: sun.yuxiang@outlook.com
+
 import os
 import torch
 from torch.utils.data.dataset import Dataset
@@ -28,7 +31,7 @@ class MF_dataset(Dataset):
     def read_image(self, name, folder):
         file_path = os.path.join(self.data_dir, '%s/%s.png' % (folder, name))
         image     = np.asarray(Image.open(file_path)) # (w,h,c)
-        image.flags.writeable = True
+        #image.flags.writeable = True
         return image
 
     def get_train_item(self, index):
