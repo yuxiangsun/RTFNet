@@ -38,7 +38,7 @@ $ mkdir -p ~/RTFNet/weights_backup/RTFNet_152
 $ cd ~/RTFNet/weights_backup/RTFNet_152
 $ (download the RTFNet_152 weight in this folder)
 $ docker build -t rtfnet_docker_image .
-$ nvidia-docker run -it --shm-size 8G --name rtfnet_docker -v ~/RTFNet_PyTorch:/opt/project rtfnet_docker_image
+$ nvidia-docker run -it --shm-size 8G --name rtfnet_docker -v ~/RTFNet:/opt/project rtfnet_docker_image
 $ (currently, you should be in the docker)
 $ cd /opt/project 
 $ python test.py
