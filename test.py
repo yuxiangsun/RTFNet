@@ -1,6 +1,6 @@
 # coding:utf-8
 # modified from: https://github.com/haqishen/MFNet-pytorch
-# By Yuxiang Sun, Nov. 8, 2018
+# By Yuxiang Sun, Aug. 2, 2019
 # Email: sun.yuxiang@outlook.com
 
 import os
@@ -122,8 +122,8 @@ if __name__ == '__main__':
     batch_size = 1 # do not change this parameter!	
 
     torch.cuda.set_device(args.gpu)
-    print "\n| the gpu count:", torch.cuda.device_count()
-    print "| the current used gpu:", torch.cuda.current_device(), '\n'
+    print("\n| the gpu count:", torch.cuda.device_count())
+    print("| the current used gpu:", torch.cuda.current_device(), '\n')
 
     model_dir = os.path.join(model_dir, args.weight_name)  # model_dir = './weights_backup/'
     if os.path.exists(model_dir) is False:

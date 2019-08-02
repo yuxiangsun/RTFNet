@@ -1,8 +1,8 @@
 # coding:utf-8
-# By Yuxiang Sun, Nov. 8, 2018
+# By Yuxiang Sun, Aug. 2, 2019
 # Email: sun.yuxiang@outlook.com
 
-import os
+import os, shutil, stat
 import argparse 
 import numpy as np
 import sys
@@ -53,9 +53,14 @@ def main():
 
 if __name__ == "__main__": 
 
-    if os.listdir('./demo_results') != []:
-        print 'the ./demo_results folder is not empty, please empty the folder first.'
-        sys.exit()
+    if os.path.exists('./demo_results') is True:
+        print('| previous \'./demo_results\' exist, will delete the folder')
+        shutil.rmtree('./demo_results')
+        os.makedirs('./demo_results')
+        os.chmod('./demo_results', stat.S_IRWXO)  # allow the folder created by docker read, written, and execuated by local machine
+    else:
+        os.makedirs('./demo_results')
+        os.chmod('./demo_results', stat.S_IRWXO)  # allow the folder created by docker read, written, and execuated by local machine
 
     parser = argparse.ArgumentParser(description='Run demo with pytorch')
     parser.add_argument('--model_name', '-M',  type=str, default='RTFNet')
@@ -64,8 +69,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     torch.cuda.set_device(args.gpu)
-    print "\n| the gpu count:", torch.cuda.device_count()
-    print "| the current used gpu:", torch.cuda.current_device(), '\n'
+    print("\n| the gpu count:", torch.cuda.device_count())
+    print("| the current used gpu:", torch.cuda.current_device(), '\n')
 
     model_dir = os.path.join(model_dir, args.weight_name)  # model_dir = './weights_backup/'
 

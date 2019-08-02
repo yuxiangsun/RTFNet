@@ -1,14 +1,16 @@
 # RTFNet-pytorch
 
-This is the official pytorch implementation of [RTFNet: RGB-Thermal Fusion Network for Semantic Segmentation of Urban Scenes](http://eeyxsun.people.ust.hk/docs/RAL2019_rtfnet.pdf) (IEEE RAL). The util, test and demo codes are heavily borrowed from [MFNet](https://github.com/haqishen/MFNet-pytorch). 
+This is the official pytorch implementation of [RTFNet: RGB-Thermal Fusion Network for Semantic Segmentation of Urban Scenes](https://github.com/yuxiangsun/RTFNet/blob/master/doc/RAL2019_RTFNet.pdf) (IEEE RAL). The util, train, test and demo codes are heavily borrowed from [MFNet](https://github.com/haqishen/MFNet-pytorch). 
 
 Note that our implementations of the evaluation metrics (Acc and IoU) are different from those in MFNet. In addition, we consider the unlabelled class when computing the metrics. We think that it is fine to directly import our results (including the compared networks) in your paper if you use our `test.py` to evaluate your model.
+
+The current version supports Python 3.6, CUDA 10.1 and PyTorch 1.1.
 
 <img src="doc/network.png" width="900px"/>
   
 ## Introduction
 
-RTFNet is a data-fusion network for semantic segmentation. It consists of two encoders and one decoder. 
+RTFNet is a data-fusion network for semantic segmentation. It consists of two encoders and one decoder. Although RTFNet is designed with RGB-Thermal data, it generalizes well for RGB-D data. Please take a look at this IEEE RAL 2019 [paper](https://doi.org/10.1109/LRA.2019.2932874).
  
 ## Dataset
  
@@ -38,12 +40,31 @@ $ mkdir -p ~/RTFNet/weights_backup/RTFNet_152
 $ cd ~/RTFNet/weights_backup/RTFNet_152
 $ (download the RTFNet_152 weight in this folder)
 $ docker build -t rtfnet_docker_image .
-$ nvidia-docker run -it --shm-size 8G --name rtfnet_docker -v ~/RTFNet:/opt/project rtfnet_docker_image
+$ nvidia-docker run -it --shm-size 8G -p 1234:6006 --name rtfnet_docker -v ~/RTFNet:/opt/project rtfnet_docker_image
 $ (currently, you should be in the docker)
 $ cd /opt/project 
-$ python test.py
-$ python run_demo.py
+$ python3 test.py
+$ python3 run_demo.py
 ```
+
+* To train RTFNet (please mannully change RTFNet variants in the model file):
+```
+$ cd ~ 
+$ git clone https://github.com/yuxiangsun/RTFNet.git
+$ mkdir ~/RTFNet/dataset
+$ cd ~/RTFNet/dataset
+$ (download our preprocessed dataset.zip in this folder)
+$ unzip -d .. dataset.zip
+$ docker build -t rtfnet_docker_image .
+$ nvidia-docker run -it --shm-size 8G -p 1234:6006 --name rtfnet_docker -v ~/RTFNet:/opt/project rtfnet_docker_image
+$ (currently, you should be in the docker)
+$ cd /opt/project 
+$ python3 train.py
+$ (fire up another terminal)
+$ nvidia-docker exec -it rtfnet_docker bash
+$ cd /opt/project/runs
+$ tensorboard --logdir=.
+$ (fire up your favorite browser with http://localhost:1234, you will see the tensorboard)
 
 ## Citation
 
@@ -69,3 +90,5 @@ month={July},}
 
 ## Contact
 sun.yuxiang@outlook.com
+http://eeyxsun.people.ust.hk/
+
