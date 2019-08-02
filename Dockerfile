@@ -5,5 +5,3 @@ RUN pip3 install tensorboardX==1.8 torchsummary==1.5.1 tensorflow==1.14.0
 RUN pip3 install torch==1.1 torchvision==0.3.0
 #RUN pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple torch==1.1 torchvision # for China mainland users
 RUN pip3 install numpy==1.16.4
-
-
