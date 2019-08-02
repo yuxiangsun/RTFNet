@@ -27,13 +27,14 @@ RTFNet 152: http://gofile.me/4jm56/ODE2fxJKG
 ```
 $ cd ~ 
 $ git clone https://github.com/yuxiangsun/RTFNet.git
-$ cd ~/RTFNet
-$ mkdir dataset
+$ mkdir ~/RTFNet/dataset
 $ cd ~/RTFNet/dataset
 $ (download our preprocessed dataset.zip in this folder)
 $ unzip -d .. dataset.zip
+$ mkdir -p ~/RTFNet/weights_backup/RTFNet_50
 $ cd ~/RTFNet/weights_backup/RTFNet_50
 $ (download the RTFNet_50 weight in this folder)
+$ mkdir -p ~/RTFNet/weights_backup/RTFNet_152
 $ cd ~/RTFNet/weights_backup/RTFNet_152
 $ (download the RTFNet_152 weight in this folder)
 $ docker build -t rtfnet_docker_image .
