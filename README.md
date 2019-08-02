@@ -65,6 +65,7 @@ $ nvidia-docker exec -it rtfnet_docker bash
 $ cd /opt/project/runs
 $ tensorboard --logdir=.
 $ (fire up your favorite browser with http://localhost:1234, you will see the tensorboard)
+```
 
 ## Citation
 
