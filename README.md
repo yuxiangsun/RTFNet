@@ -27,6 +27,8 @@ RTFNet 152: http://gofile.me/4jm56/ODE2fxJKG
 ```
 $ cd ~ 
 $ git clone https://github.com/yuxiangsun/RTFNet.git
+$ cd ~/RTFNet
+$ mkdir dataset
 $ cd ~/RTFNet/dataset
 $ (download our preprocessed dataset.zip in this folder)
 $ unzip -d .. dataset.zip
