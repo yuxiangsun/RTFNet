@@ -25,7 +25,7 @@ RTFNet 152: http://gofile.me/4jm56/ODE2fxJKG
 
 ## Usage
 
-* Assume you have nvidia docker installed. To reproduce our results (please mannully change RTFNet variants in the model code):
+* Assume you have nvidia docker installed. To reproduce our results (please mannully change RTFNet variants in the model code and the weight name in the test code):
 ```
 $ cd ~ 
 $ git clone https://github.com/yuxiangsun/RTFNet.git
