@@ -4,7 +4,7 @@ This is the official pytorch implementation of [RTFNet: RGB-Thermal Fusion Netwo
 
 Note that our implementations of the evaluation metrics (Acc and IoU) are different from those in MFNet. In addition, we consider the unlabelled class when computing the metrics. We think that it is fine to directly import our results (including the compared networks) in your paper if you use our `train.py` and `test.py` scripts to train and evaluate your model.
 
-The current version supports Python 3.6, CUDA 10.1 and PyTorch 1.1, but it works fine with Python 2.7 and lower versions of cuda and PyTorch. Please modify the Docker file as you want. If you do not use docker, please manually install the dependencies listed in the Docker file.
+The current version supports Python 3.6, CUDA 10.1 and PyTorch 1.1, but it works fine with Python 2.7 and lower versions of CUDA and PyTorch. Please modify the Docker file as you want. If you do not use docker, please manually install the dependencies listed in the Docker file.
 
 <img src="doc/network.png" width="900px"/>
   
@@ -25,7 +25,7 @@ RTFNet 152: http://gofile.me/4jm56/ODE2fxJKG
 
 ## Usage
 
-* Assume you have nvidia docker installed. To reproduce our results (please mannully change RTFNet variants in the model code and the weight name in the test code):
+* Assume you have [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and [nvidia docker](https://github.com/NVIDIA/nvidia-docker) installed. To reproduce our results (please mannully change RTFNet variants in the model code and the weight name in the test code):
 ```
 $ cd ~ 
 $ git clone https://github.com/yuxiangsun/RTFNet.git
@@ -68,7 +68,7 @@ $ tensorboard --logdir=.
 $ (fire up your favorite browser with http://localhost:1234, you will see the tensorboard)
 ```
 
-Note: Please change the smoothing factor in the tensorboard webpage to `0.995`, otherwise, you may not find the patterns from the noisy plots.
+Note: Please change the smoothing factor in the Tensorboard webpage to `0.995`, otherwise, you may not find the patterns from the noisy plots.
 
 ## Citation
 
