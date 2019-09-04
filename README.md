@@ -2,9 +2,9 @@
 
 This is the official pytorch implementation of [RTFNet: RGB-Thermal Fusion Network for Semantic Segmentation of Urban Scenes](https://github.com/yuxiangsun/RTFNet/blob/master/doc/RAL2019_RTFNet.pdf) (IEEE RAL). The util, train, test and demo codes are heavily borrowed from [MFNet](https://github.com/haqishen/MFNet-pytorch). 
 
-Note that our implementations of the evaluation metrics (Acc and IoU) are different from those in MFNet. In addition, we consider the unlabelled class when computing the metrics. We think that it is fine to directly import our results (including the compared networks) in your paper if you use our `test.py` to evaluate your model.
+Note that our implementations of the evaluation metrics (Acc and IoU) are different from those in MFNet. In addition, we consider the unlabelled class when computing the metrics. We think that it is fine to directly import our results (including the compared networks) in your paper if you use our `train.py` and `test.py` scripts to train and evaluate your model.
 
-The current version supports Python 3.6, CUDA 10.1 and PyTorch 1.1.
+The current version supports Python 3.6, CUDA 10.1 and PyTorch 1.1, but it works fine with Python 2.7 and lower versions of cuda and PyTorch. Please modify the Docker file as you want. If you do not use docker, please manually install the dependencies listed in the Docker file.
 
 <img src="doc/network.png" width="900px"/>
   
@@ -67,6 +67,8 @@ $ cd /opt/project/runs
 $ tensorboard --logdir=.
 $ (fire up your favorite browser with http://localhost:1234, you will see the tensorboard)
 ```
+
+Note: Please change the smoothing factor in the tensorboard webpage to `0.995`, otherwise, you may not find the patterns from the noisy plots.
 
 ## Citation
 
