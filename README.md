@@ -25,7 +25,7 @@ RTFNet 152: http://gofile.me/4jm56/ODE2fxJKG
 
 ## Usage
 
-* Assume you have [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and [nvidia docker](https://github.com/NVIDIA/nvidia-docker) installed. To reproduce our results (please mannully change `num_resnet_layers` in `RTFNet.py` and `weight_name` in `test.py`):
+* Assume you have [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and [nvidia docker](https://github.com/NVIDIA/nvidia-docker) installed. To reproduce our results (for different RTFNet variants, please mannully change `num_resnet_layers` in `RTFNet.py` and `weight_name` in `test.py`):
 ```
 $ cd ~ 
 $ git clone https://github.com/yuxiangsun/RTFNet.git
@@ -47,7 +47,7 @@ $ python3 test.py
 $ python3 run_demo.py
 ```
 
-* To train RTFNet (please mannully change `num_resnet_layers` in `RTFNet.py`):
+* To train RTFNet (for different RTFNet variants, please mannully change `num_resnet_layers` in `RTFNet.py`):
 ```
 $ cd ~ 
 $ git clone https://github.com/yuxiangsun/RTFNet.git
