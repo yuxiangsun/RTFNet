@@ -1,6 +1,6 @@
 # coding:utf-8
 # modified from: https://github.com/haqishen/MFNet-pytorch
-# By Yuxiang Sun, Aug. 2, 2019
+# By Yuxiang Sun, Oct. 10, 2019
 # Email: sun.yuxiang@outlook.com
 
 import os, argparse, time, sys, stat, shutil
@@ -192,7 +192,7 @@ def main():
         testing_result_appender.write("# epoch, ave_precision(nan_to_num), ave_recall(nan_to_num), ave_IOU(nan_to_num).\n")
 
     for epo in range(args.epoch_from, args.epoch_max):
-        print('\n| train %s, epo #%s begin...' %(args.model_name, epo))
+        print('\ntrain %s, epo #%s begin...' %(args.model_name, epo))
 
         train(epo, model, train_loader, optimizer)
         validation(epo, model, val_loader)
@@ -213,7 +213,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Train with pytorch')
     ############################################################################################# 
     parser.add_argument('--model_name',  '-M',  type=str, default='RTFNet')
-    parser.add_argument('--batch_size',  '-B',  type=int, default=2)
+    #batch_size: RTFNet-152: 2; RTFNet-101: 2; RTFNet-50: 3; RTFNet-34: 10; RTFNet-18: 15;
+    parser.add_argument('--batch_size',  '-B',  type=int, default=2) 
     parser.add_argument('--lr_start',  '-LS',  type=float, default=0.01)
     parser.add_argument('--gpu',        '-G',  type=int, default=0)
     #############################################################################################
@@ -224,8 +225,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
  
     torch.cuda.set_device(args.gpu)
-    print("\n| the gpu count:", torch.cuda.device_count())
-    print("| the current used gpu:", torch.cuda.current_device(), '\n')
+    print("\nthe gpu count:", torch.cuda.device_count())
+    print("the current used gpu:", torch.cuda.current_device(), '\n')
 
     model = eval(args.model_name)(n_class=n_class)
     if args.gpu >= 0: model.cuda(args.gpu)
@@ -233,23 +234,28 @@ if __name__ == '__main__':
 
     weight_dir = os.path.join(weight_dir, args.model_name)
     if os.path.exists(weight_dir) is True: 
-        print('| previous weight exist, will delete the weight folder')
+        print('previous weights folder exist, will delete the weights folder')
         shutil.rmtree(weight_dir)
-        shutil.rmtree("runs")
         os.makedirs(weight_dir)
-        os.chmod(weight_dir, stat.S_IRWXO)  # allow the folder created by docker read, written, and execuated by local machine
-        os.makedirs("runs")
-        os.chmod("runs", stat.S_IRWXO)
+        os.chmod(weight_dir, stat.S_IRWXO)  # allow the folder created by docker read and written by local machine
     else:
         os.makedirs(weight_dir)
         os.chmod(weight_dir, stat.S_IRWXO)
 
+    if os.path.exists("runs") is True: 
+        print('previous runs folder exist, will delete the runs folder')
+        shutil.rmtree("runs")
+        os.makedirs("runs")
+        os.chmod("runs", stat.S_IRWXO)
+    else:
+        os.makedirs('runs')
+        os.chmod('runs', stat.S_IRWXO)
+
     # tensorboardX setup
     writer = SummaryWriter('runs')  # default log directory is 'runs'
-    os.chmod('runs', stat.S_IRWXO)
 
-    print('| training %s on GPU #%d with pytorch' % (args.model_name, args.gpu))
-    print('| from epoch %d / %s' % (args.epoch_from, args.epoch_max))
-    print('| weight will be saved in: %s' % weight_dir)
+    print('training %s on GPU #%d with pytorch' % (args.model_name, args.gpu))
+    print('from epoch %d / %s' % (args.epoch_from, args.epoch_max))
+    print('weight will be saved in: %s' % weight_dir)
 
     main()
