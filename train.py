@@ -198,7 +198,7 @@ def main():
         validation(epo, model, val_loader)
  
         checkpoint_model_file = os.path.join(weight_dir, str(epo)+'.pth')
-        print('|- saving check point %s: \n' %checkpoint_model_file)
+        print('|- saving check point %s: ' %checkpoint_model_file)
         torch.save(model.state_dict(), checkpoint_model_file)
 
         np.set_printoptions(precision=8, threshold=np.inf, linewidth=np.inf, suppress=True, floatmode='fixed')
