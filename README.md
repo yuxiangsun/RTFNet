@@ -68,6 +68,8 @@ $ (fire up your favorite browser with http://localhost:1234, you will see the te
 
 Note: Please change the smoothing factor in the Tensorboard webpage to `0.995`, otherwise, you may not find the patterns from the noisy plots.
 
+* PyCharm is a great IDE for python. [Here](https://github.com/yuxiangsun/PyCharm_Docker_Tutorial) is a tutorial on how to use PyCharm with Docker for deep learning research.
+
 ## Citation
 
 If you use RTFNet in an academic work, please cite:
