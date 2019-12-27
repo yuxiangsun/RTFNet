@@ -23,7 +23,7 @@ def visualize(image_name, predictions, weight_name):
     for (i, pred) in enumerate(predictions):
         pred = predictions[i].cpu().numpy()
         img = np.zeros((pred.shape[0], pred.shape[1], 3), dtype=np.uint8)
-        for cid in range(1, int(predictions.max())):
+        for cid in range(1, int(predictions.max()+1)):
             img[pred == cid] = palette[cid]
 
         img = Image.fromarray(np.uint8(img)) 
