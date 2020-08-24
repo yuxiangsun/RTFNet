@@ -2,7 +2,7 @@
 
 This is the official pytorch implementation of [RTFNet: RGB-Thermal Fusion Network for Semantic Segmentation of Urban Scenes](https://github.com/yuxiangsun/RTFNet/blob/master/doc/RAL2019_RTFNet.pdf) (IEEE RAL). The util, train, test and demo codes are heavily borrowed from [MFNet](https://github.com/haqishen/MFNet-pytorch). Note that our implementations of the evaluation metrics (Acc and IoU) are different from those in MFNet. In addition, we consider the unlabelled class when computing the metrics.
 
-The current version supports Python 3.6, CUDA 10.1 and PyTorch 1.2, but it works fine with Python 2.7 and lower versions of CUDA and PyTorch. Please modify the `Dockerfile` as you want. If you do not use docker, please manually install the dependencies listed in the `Dockerfile`.
+The current version supports Python 3.6, CUDA>=10.1 and PyTorch>=1.2, but it works fine with Python 2.7 and lower versions of CUDA and PyTorch. Please modify the `Dockerfile` as you want. If you do not use docker, please manually install the dependencies listed in the `Dockerfile`.
 
 <img src="doc/network.png" width="900px"/>
   
