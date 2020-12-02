@@ -101,72 +101,72 @@ class RTFNet(nn.Module):
         rgb = input[:,:3]
         thermal = input[:,3:]
 
-        vobose = False
+        verbose = False
 
         # encoder
 
         ######################################################################
 
-        if vobose: print("rgb.size() original: ", rgb.size())  # (480, 640)
-        if vobose: print("thermal.size() original: ", thermal.size()) # (480, 640)
+        if verbose: print("rgb.size() original: ", rgb.size())  # (480, 640)
+        if verbose: print("thermal.size() original: ", thermal.size()) # (480, 640)
 
         ######################################################################
 
         rgb = self.encoder_rgb_conv1(rgb)
-        if vobose: print("rgb.size() after conv1: ", rgb.size()) # (240, 320)
+        if verbose: print("rgb.size() after conv1: ", rgb.size()) # (240, 320)
         rgb = self.encoder_rgb_bn1(rgb)
-        if vobose: print("rgb.size() after bn1: ", rgb.size())  # (240, 320)
+        if verbose: print("rgb.size() after bn1: ", rgb.size())  # (240, 320)
         rgb = self.encoder_rgb_relu(rgb)
-        if vobose: print("rgb.size() after relu: ", rgb.size())  # (240, 320)
+        if verbose: print("rgb.size() after relu: ", rgb.size())  # (240, 320)
 
         thermal = self.encoder_thermal_conv1(thermal)
-        if vobose: print("thermal.size() after conv1: ", thermal.size()) # (240, 320)
+        if verbose: print("thermal.size() after conv1: ", thermal.size()) # (240, 320)
         thermal = self.encoder_thermal_bn1(thermal)
-        if vobose: print("thermal.size() after bn1: ", thermal.size()) # (240, 320)
+        if verbose: print("thermal.size() after bn1: ", thermal.size()) # (240, 320)
         thermal = self.encoder_thermal_relu(thermal)
-        if vobose: print("thermal.size() after relu: ", thermal.size())  # (240, 320)
+        if verbose: print("thermal.size() after relu: ", thermal.size())  # (240, 320)
 
         rgb = rgb + thermal
 
         rgb = self.encoder_rgb_maxpool(rgb)
-        if vobose: print("rgb.size() after maxpool: ", rgb.size()) # (120, 160)
+        if verbose: print("rgb.size() after maxpool: ", rgb.size()) # (120, 160)
 
         thermal = self.encoder_thermal_maxpool(thermal)
-        if vobose: print("thermal.size() after maxpool: ", thermal.size()) # (120, 160)
+        if verbose: print("thermal.size() after maxpool: ", thermal.size()) # (120, 160)
 
         ######################################################################
 
         rgb = self.encoder_rgb_layer1(rgb)
-        if vobose: print("rgb.size() after layer1: ", rgb.size()) # (120, 160)
+        if verbose: print("rgb.size() after layer1: ", rgb.size()) # (120, 160)
         thermal = self.encoder_thermal_layer1(thermal)
-        if vobose: print("thermal.size() after layer1: ", thermal.size()) # (120, 160)
+        if verbose: print("thermal.size() after layer1: ", thermal.size()) # (120, 160)
 
         rgb = rgb + thermal
 
         ######################################################################
  
         rgb = self.encoder_rgb_layer2(rgb)
-        if vobose: print("rgb.size() after layer2: ", rgb.size()) # (60, 80)
+        if verbose: print("rgb.size() after layer2: ", rgb.size()) # (60, 80)
         thermal = self.encoder_thermal_layer2(thermal)
-        if vobose: print("thermal.size() after layer2: ", thermal.size()) # (60, 80)
+        if verbose: print("thermal.size() after layer2: ", thermal.size()) # (60, 80)
 
         rgb = rgb + thermal
 
         ######################################################################
 
         rgb = self.encoder_rgb_layer3(rgb)
-        if vobose: print("rgb.size() after layer3: ", rgb.size()) # (30, 40)
+        if verbose: print("rgb.size() after layer3: ", rgb.size()) # (30, 40)
         thermal = self.encoder_thermal_layer3(thermal)
-        if vobose: print("thermal.size() after layer3: ", thermal.size()) # (30, 40)
+        if verbose: print("thermal.size() after layer3: ", thermal.size()) # (30, 40)
 
         rgb = rgb + thermal
 
         ######################################################################
 
         rgb = self.encoder_rgb_layer4(rgb)
-        if vobose: print("rgb.size() after layer4: ", rgb.size()) # (15, 20)
+        if verbose: print("rgb.size() after layer4: ", rgb.size()) # (15, 20)
         thermal = self.encoder_thermal_layer4(thermal)
-        if vobose: print("thermal.size() after layer4: ", thermal.size()) # (15, 20)
+        if verbose: print("thermal.size() after layer4: ", thermal.size()) # (15, 20)
 
         fuse = rgb + thermal
 
@@ -175,15 +175,15 @@ class RTFNet(nn.Module):
         # decoder
 
         fuse = self.deconv1(fuse)
-        if vobose: print("fuse after deconv1: ", fuse.size()) # (30, 40)
+        if verbose: print("fuse after deconv1: ", fuse.size()) # (30, 40)
         fuse = self.deconv2(fuse)
-        if vobose: print("fuse after deconv2: ", fuse.size()) # (60, 80)
+        if verbose: print("fuse after deconv2: ", fuse.size()) # (60, 80)
         fuse = self.deconv3(fuse)
-        if vobose: print("fuse after deconv3: ", fuse.size()) # (120, 160)
+        if verbose: print("fuse after deconv3: ", fuse.size()) # (120, 160)
         fuse = self.deconv4(fuse)
-        if vobose: print("fuse after deconv4: ", fuse.size()) # (240, 320)
+        if verbose: print("fuse after deconv4: ", fuse.size()) # (240, 320)
         fuse = self.deconv5(fuse)
-        if vobose: print("fuse after deconv5: ", fuse.size()) # (480, 640)
+        if verbose: print("fuse after deconv5: ", fuse.size()) # (480, 640)
 
         return fuse
   
