@@ -90,6 +90,10 @@ month={July},}
 
 <img src="doc/demo.png" width="900px"/>
 
+## About VSCode and Docker
+
+We suggest use VSCode+Docker for deep learning research. [Here](https://github.com/yuxiangsun/VSCode_Docker_Tutorial) is a tutorial.
+
 ## Contact
 
 sun.yuxiang@outlook.com, https://yuxiangsun.github.io/
