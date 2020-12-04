@@ -1,9 +1,10 @@
-# coding:utf-8
+# By Yuxiang Sun, Dec. 4, 2020
+# Email: sun.yuxiang@outlook.com
+
 import numpy as np 
 from PIL import Image 
  
 # 0:unlabeled, 1:car, 2:person, 3:bike, 4:curve, 5:car_stop, 6:guardrail, 7:color_cone, 8:bump 
-
 def get_palette():
     unlabelled = [0,0,0]
     car        = [64,0,128]
@@ -17,7 +18,6 @@ def get_palette():
     palette    = np.array([unlabelled,car, person, bike, curve, car_stop, guardrail, color_cone, bump])
     return palette
 
-
 def visualize(image_name, predictions, weight_name):
     palette = get_palette()
     for (i, pred) in enumerate(predictions):
@@ -25,8 +25,8 @@ def visualize(image_name, predictions, weight_name):
         img = np.zeros((pred.shape[0], pred.shape[1], 3), dtype=np.uint8)
         for cid in range(0, len(palette)): # fix the mistake from the MFNet code on Dec.27, 2019
             img[pred == cid] = palette[cid]
-        img = Image.fromarray(np.uint8(img)) 
-        img.save('demo_results/Pred_' + weight_name + '_' + image_name)
+        img = Image.fromarray(np.uint8(img))
+        img.save('runs/Pred_' + weight_name + '_' + image_name[i] + '.png')
 
 def compute_results(conf_total):
     n_class =  conf_total.shape[0]

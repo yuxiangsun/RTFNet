@@ -1,4 +1,3 @@
-# coding:utf-8
 # Modified by Yuxiang Sun, Aug. 2, 2019
 # Email: sun.yuxiang@outlook.com
 
@@ -11,7 +10,7 @@ from PIL import Image
 
 class MF_dataset(Dataset):
 
-    def __init__(self, data_dir, split, have_label, input_h=480, input_w=640 ,transform=[]):
+    def __init__(self, data_dir, split, have_label=True, input_h=480, input_w=640 ,transform=[]):
         super(MF_dataset, self).__init__()
 
         assert split in ['train', 'val', 'test', 'test_day', 'test_night', 'val_test'], 'split must be "train"|"val"|"test"|"test_day"|"test_night"|"val_test"'  # test_day, test_night
@@ -54,7 +53,6 @@ class MF_dataset(Dataset):
 
         return torch.tensor(image), name
 
-
     def __getitem__(self, index):
 
         if self.is_train is True:
@@ -64,7 +62,3 @@ class MF_dataset(Dataset):
 
     def __len__(self):
         return self.n_data
-
-if __name__ == '__main__':
-    data_dir = '../../data/MF/'
-    MF_dataset()
