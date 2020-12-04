@@ -35,7 +35,7 @@ $ (download our preprocessed dataset.zip in this folder)
 $ unzip -d .. dataset.zip
 ```
 
-* To reproduce our results (for different RTFNet variants, please mannully change `num_resnet_layers` in `RTFNet.py` and `weight_name` in `test.py`):
+* To reproduce our results (for different RTFNet variants, please mannully change `num_resnet_layers` in `RTFNet.py` and `weight_name` in `run_demo.py`):
 ```
 $ cd ~/RTFNet
 $ mkdir -p ~/RTFNet/weights_backup/RTFNet_50
