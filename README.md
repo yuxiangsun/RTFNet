@@ -2,7 +2,7 @@
 
 This is the official pytorch implementation of [RTFNet: RGB-Thermal Fusion Network for Semantic Segmentation of Urban Scenes](https://github.com/yuxiangsun/RTFNet/blob/master/doc/RAL2019_RTFNet.pdf) (IEEE RAL). The util, train, test and demo codes are heavily borrowed from [MFNet](https://github.com/haqishen/MFNet-pytorch). Note that our implementations of the evaluation metrics (Acc and IoU) are different from those in MFNet. In addition, we consider the unlabelled class when computing the metrics.
 
-The current version supports Python 3.6, CUDA>=10.1 and PyTorch>=1.2, but it works fine with Python 2.7 and lower versions of CUDA and PyTorch. Please modify the `Dockerfile` as you want. If you do not use docker, please manually install the dependencies listed in the `Dockerfile`.
+The current version supports Python 3.6, CUDA>=10.2 and PyTorch>=1.5, but it works fine with Python 2.7 and lower versions of CUDA and PyTorch. Please modify the `Dockerfile` as you want. If you do not use docker, please manually install the dependencies listed in the `Dockerfile`.
 
 <img src="doc/network.png" width="900px"/>
   
@@ -23,50 +23,49 @@ RTFNet 152: http://gofile.me/4jm56/ODE2fxJKG
 
 ## Usage
 
-* Assume you have [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and [nvidia docker](https://github.com/NVIDIA/nvidia-docker) installed. To reproduce our results (for different RTFNet variants, please mannully change `num_resnet_layers` in `RTFNet.py` and `weight_name` in `test.py`):
+* Assume you have [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) installed. First, you need to build a docker image. Then, download the dataset:
 ```
 $ cd ~ 
 $ git clone https://github.com/yuxiangsun/RTFNet.git
+$ cd ~/RTFNet
+$ docker build -t docker_image_rtfnet .
 $ mkdir ~/RTFNet/dataset
 $ cd ~/RTFNet/dataset
 $ (download our preprocessed dataset.zip in this folder)
 $ unzip -d .. dataset.zip
+```
+
+* To reproduce our results (for different RTFNet variants, please mannully change `num_resnet_layers` in `RTFNet.py` and `weight_name` in `test.py`):
+```
+$ cd ~/RTFNet
 $ mkdir -p ~/RTFNet/weights_backup/RTFNet_50
 $ cd ~/RTFNet/weights_backup/RTFNet_50
 $ (download the RTFNet_50 weight in this folder)
 $ mkdir -p ~/RTFNet/weights_backup/RTFNet_152
 $ cd ~/RTFNet/weights_backup/RTFNet_152
 $ (download the RTFNet_152 weight in this folder)
-$ docker build -t rtfnet_docker_image .
-$ nvidia-docker run -it --shm-size 8G -p 1234:6006 --name rtfnet_docker -v ~/RTFNet:/opt/project rtfnet_docker_image
+$ docker run -it --shm-size 8G -p 1234:6006 --name docker_container_rtfnet -v ~/RTFNet:/workspace docker_image_rtfnet
 $ (currently, you should be in the docker)
-$ cd /opt/project 
-$ python3 test.py
+$ cd /workspace
 $ python3 run_demo.py
 ```
+The results will be saved in the `./runs` folder.
 
 * To train RTFNet (for different RTFNet variants, please mannully change `num_resnet_layers` in `RTFNet.py`):
 ```
-$ cd ~ 
-$ git clone https://github.com/yuxiangsun/RTFNet.git
-$ mkdir ~/RTFNet/dataset
-$ cd ~/RTFNet/dataset
-$ (download our preprocessed dataset.zip in this folder)
-$ unzip -d .. dataset.zip
-$ cd ~/RTFNet
-$ docker build -t rtfnet_docker_image .
-$ nvidia-docker run -it --shm-size 8G -p 1234:6006 --name rtfnet_docker -v ~/RTFNet:/opt/project rtfnet_docker_image
+$ docker run -it --shm-size 8G -p 1234:6006 --name docker_container_rtfnet -v ~/RTFNet:/workspace docker_image_rtfnet
 $ (currently, you should be in the docker)
-$ cd /opt/project 
+$ cd /workspace
 $ python3 train.py
 $ (fire up another terminal)
-$ nvidia-docker exec -it rtfnet_docker bash
-$ cd /opt/project/runs
-$ tensorboard --logdir=.
+$ docker exec -it docker_container_rtfnet bash
+$ cd /workspace/runs
+$ tensorboard --bind_all --logdir=./runs/tensorboard_log/
 $ (fire up your favorite browser with http://localhost:1234, you will see the tensorboard)
 ```
+The results will be saved in the `./runs` folder.
 
-Note: Please change the smoothing factor in the Tensorboard webpage to `0.995`, otherwise, you may not find the patterns from the noisy plots.  
+Note: Please change the smoothing factor in the Tensorboard webpage to `0.999`, otherwise, you may not find the patterns from the noisy plots.  
 
 ## Citation
 
@@ -92,7 +91,7 @@ month={July},}
 
 ## About VSCode and Docker
 
-We suggest use VSCode+Docker for deep learning research. [Here](https://github.com/yuxiangsun/VSCode_Docker_Tutorial) is a tutorial.
+We suggest use VSCode and Docker for deep learning research. [Here](https://github.com/yuxiangsun/VSCode_Docker_Tutorial) is a tutorial.
 
 ## Contact
 
