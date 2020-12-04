@@ -91,7 +91,7 @@ month={July},}
 
 ## About VSCode and Docker
 
-We suggest use VSCode and Docker for deep learning research. This repo already contains the `.devcontainer` folder.
+We suggest use VSCode and Docker for deep learning research. Note that this repo already contains the `.devcontainer` folder, which is needed by VSCode.
 For more details, please refer to this [tutorial](https://github.com/yuxiangsun/VSCode_Docker_Tutorial).
 
 ## Contact
