@@ -8,7 +8,7 @@ The current version supports Python 3.6, CUDA>=10.2 and PyTorch>=1.7, but it sho
   
 ## Introduction
 
-RTFNet is a data-fusion network for semantic segmentation. It consists of two encoders and one decoder. Although RTFNet is designed with RGB-Thermal data, it generalizes well for RGB-D data. Please take a look at another RAL [paper](https://doi.org/10.1109/LRA.2019.2932874).
+RTFNet is a data-fusion network for semantic segmentation. It consists of two encoders and one decoder. Although RTFNet is designed with RGB-Thermal data, it generalizes well for RGB-D data. Please take a look at the [paper](https://doi.org/10.1109/LRA.2019.2932874).
  
 ## Dataset
  
