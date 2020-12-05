@@ -25,7 +25,6 @@ class MF_dataset(Dataset):
         self.transform = transform
         self.n_data    = len(self.names)
 
-
     def read_image(self, name, folder):
         file_path = os.path.join(self.data_dir, '%s/%s.png' % (folder, name))
         image     = np.asarray(Image.open(file_path)) # (w,h,c)
