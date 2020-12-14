@@ -1,27 +1,28 @@
-# By Yuxiang Sun, Dec. 4, 2020
+# By Yuxiang Sun, Dec. 14, 2020
 # Email: sun.yuxiang@outlook.com
 
-import os, argparse, time, datetime, sys, shutil, stat
+import os, argparse, time, datetime, sys, shutil, stat, torch
 import numpy as np 
-import torch 
 from torch.autograd import Variable
 from torch.utils.data import DataLoader
 from util.MF_dataset import MF_dataset 
 from util.util import compute_results, visualize
 from sklearn.metrics import confusion_matrix
 from scipy.io import savemat 
-from model import RTFNet 
+from model import RTFNet
 
 #############################################################################################
 parser = argparse.ArgumentParser(description='Test with pytorch')
 #############################################################################################
 parser.add_argument('--model_name', '-m', type=str, default='RTFNet')
 parser.add_argument('--weight_name', '-w', type=str, default='RTFNet_152') # RTFNet_152, RTFNet_50, please change the number of layers in the network file
+parser.add_argument('--file_name', '-f', type=str, default='final.pth')
 parser.add_argument('--dataset_split', '-d', type=str, default='test') # test, test_day, test_night
+parser.add_argument('--gpu', '-g', type=int, default=0)
+#############################################################################################
 parser.add_argument('--img_height', '-ih', type=int, default=480) 
 parser.add_argument('--img_width', '-iw', type=int, default=640)  
-parser.add_argument('--gpu', '-g', type=int, default=0)
-parser.add_argument('--num_workers', '-j', type=int, default=8)
+parser.add_argument('--num_workers', '-j', type=int, default=16)
 parser.add_argument('--n_class', '-nc', type=int, default=9)
 parser.add_argument('--data_dir', '-dr', type=str, default='./dataset/')
 parser.add_argument('--model_dir', '-wd', type=str, default='./weights_backup/')
@@ -44,7 +45,7 @@ if __name__ == '__main__':
     model_dir = os.path.join(args.model_dir, args.weight_name)
     if os.path.exists(model_dir) is False:
         sys.exit("the %s does not exit." %(model_dir))
-    model_file = os.path.join(model_dir, 'final.pth')
+    model_file = os.path.join(model_dir, args.file_name)
     if os.path.exists(model_file) is True:
         print('use the final model file.')
     else:
@@ -105,6 +106,8 @@ if __name__ == '__main__':
     print('\n* the tested dataset name: %s' % args.dataset_split)
     print('* the tested image count: %d' % len(test_loader))
     print('* the tested image size: %d*%d' %(args.img_height, args.img_width)) 
+    print('* the weight name: %s' %args.weight_name) 
+    print('* the file name: %s' %args.file_name) 
     print("* recall per class: \n    unlabeled: %.6f, car: %.6f, person: %.6f, bike: %.6f, curve: %.6f, car_stop: %.6f, guardrail: %.6f, color_cone: %.6f, bump: %.6f" \
           %(recall_per_class[0], recall_per_class[1], recall_per_class[2], recall_per_class[3], recall_per_class[4], recall_per_class[5], recall_per_class[6], recall_per_class[7], recall_per_class[8]))
     print("* iou per class: \n    unlabeled: %.6f, car: %.6f, person: %.6f, bike: %.6f, curve: %.6f, car_stop: %.6f, guardrail: %.6f, color_cone: %.6f, bump: %.6f" \
