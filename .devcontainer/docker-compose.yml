@@ -14,6 +14,8 @@ services:
     # user: vscode
     runtime: nvidia
     image: docker_image_rtfnet # The name of the docker image
+    ports:
+      - '1234:6006' 
     volumes:
       # Update this to wherever you want VS Code to mount the folder of your project
       - ..:/workspace:cached # Do not change!
