@@ -26,7 +26,7 @@ class MF_dataset(Dataset):
 
     def read_image(self, name, folder):
         file_path = os.path.join(self.data_dir, '%s/%s.png' % (folder, name))
-        image     = np.asarray(PIL.Image.open(file_path)) # (w,h,c)
+        image     = np.asarray(PIL.Image.open(file_path))
         return image
 
     def __getitem__(self, index):
