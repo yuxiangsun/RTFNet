@@ -44,7 +44,7 @@ $ (download the RTFNet_50 weight in this folder)
 $ mkdir -p ~/RTFNet/weights_backup/RTFNet_152
 $ cd ~/RTFNet/weights_backup/RTFNet_152
 $ (download the RTFNet_152 weight in this folder)
-$ docker run -it --shm-size 8G -p 1234:6006 --name docker_container_rtfnet -v ~/RTFNet:/workspace docker_image_rtfnet
+$ docker run -it --shm-size 8G -p 1234:6006 --name docker_container_rtfnet --gpus all -v ~/RTFNet:/workspace docker_image_rtfnet
 $ (currently, you should be in the docker)
 $ cd /workspace
 $ python3 run_demo.py
@@ -53,7 +53,7 @@ The results will be saved in the `./runs` folder.
 
 * To train RTFNet (for different RTFNet variants, please mannully change `num_resnet_layers` in `RTFNet.py`):
 ```
-$ docker run -it --shm-size 8G -p 1234:6006 --name docker_container_rtfnet -v ~/RTFNet:/workspace docker_image_rtfnet
+$ docker run -it --shm-size 8G -p 1234:6006 --name docker_container_rtfnet --gpus all -v ~/RTFNet:/workspace docker_image_rtfnet
 $ (currently, you should be in the docker)
 $ cd /workspace
 $ python3 train.py
