@@ -1,4 +1,5 @@
-FROM nvidia/cuda:10.2-cudnn8-devel-ubuntu18.04 
+FROM nvidia/cuda:11.1-cudnn8-devel-ubuntu18.04
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y vim python3 python3-pip 
 
 RUN pip3 install --upgrade pip
