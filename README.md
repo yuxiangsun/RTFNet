@@ -59,7 +59,7 @@ $ cd /workspace
 $ python3 train.py
 $ (fire up another terminal)
 $ docker exec -it docker_container_rtfnet bash
-$ cd /workspace/runs
+$ cd /workspace
 $ tensorboard --bind_all --logdir=./runs/tensorboard_log/
 $ (fire up your favorite browser with http://localhost:1234, you will see the tensorboard)
 ```
