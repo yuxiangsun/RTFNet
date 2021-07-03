@@ -1,4 +1,4 @@
-# By Yuxiang Sun, Jan. 15, 2021
+# By Yuxiang Sun, Jul. 3, 2021
 # Email: sun.yuxiang@outlook.com
 
 import os, torch
@@ -35,8 +35,13 @@ class MF_dataset(Dataset):
         label = self.read_image(name, 'labels')
         for func in self.transform:
             image, label = func(image, label)
-        image = np.asarray(PIL.Image.fromarray(image).resize((self.input_w, self.input_h)), dtype=np.float32).transpose((2,0,1))/255
-        label = np.asarray(PIL.Image.fromarray(label).resize((self.input_w, self.input_h), resample=PIL.Image.NEAREST), dtype=np.int64)
+            
+        image = np.asarray(PIL.Image.fromarray(image).resize((self.input_w, self.input_h)))
+        image = image.astype('float32')
+        image = np.transpose(image, (2,0,1))/255.0
+        label = np.asarray(PIL.Image.fromarray(label).resize((self.input_w, self.input_h), resample=PIL.Image.NEAREST))
+        label = label.astype('int64')
+        
         return torch.tensor(image), torch.tensor(label), name
 
     def __len__(self):
