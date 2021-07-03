@@ -2,7 +2,7 @@
 
 This is the official pytorch implementation of [RTFNet: RGB-Thermal Fusion Network for Semantic Segmentation of Urban Scenes](https://github.com/yuxiangsun/RTFNet/blob/master/doc/RAL2019_RTFNet.pdf) (IEEE RAL). Some of the codes are borrowed from [MFNet](https://github.com/haqishen/MFNet-pytorch). Note that our implementations of the evaluation metrics (Acc and IoU) are different from those in MFNet. In addition, we consider the unlabelled class when computing the metrics.
 
-The current version supports Python>=3.6, CUDA>=11.1 and PyTorch>=1.7.1, but it should work fine with lower versions of CUDA and PyTorch. Please modify the `Dockerfile` as you want. If you do not use docker, please manually install the dependencies listed in the `Dockerfile`.
+The current version supports Python>=3.8, CUDA>=11.1 and PyTorch>=1.9, but it should work fine with lower versions of CUDA and PyTorch. Please modify the `Dockerfile` as you want. If you do not use docker, please manually install the dependencies listed in the `Dockerfile`.
 
 <img src="doc/network.png" width="900px"/>
   
@@ -23,7 +23,7 @@ RTFNet 152: http://gofile.me/4jm56/ODE2fxJKG
 
 ## Usage
 
-* Assume you have [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) installed. First, you need to build a docker image. Then, download the dataset:
+* Assume you have [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) installed. First, you need to build a docker image. Then, download the dataset:
 ```
 $ cd ~ 
 $ git clone https://github.com/yuxiangsun/RTFNet.git
@@ -65,7 +65,7 @@ $ (fire up your favorite browser with http://localhost:1234, you will see the te
 ```
 The results will be saved in the `./runs` folder.
 
-Note: Please change the smoothing factor in the Tensorboard webpage to `0.999`, otherwise, you may not find the patterns from the noisy plots. If you have the error `docker: Error response from daemon: could not select device driver`, please first install [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) on your computer.
+Note: Please change the smoothing factor in the Tensorboard webpage to `0.999`, otherwise, you may not find the patterns from the noisy plots. If you have the error `docker: Error response from daemon: could not select device driver`, please first install [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) on your computer!
 
 ## Citation
 
@@ -96,5 +96,5 @@ For more details, please refer to this [tutorial](https://github.com/yuxiangsun/
 
 ## Contact
 
-sun.yuxiang@outlook.com, https://yuxiangsun.github.io/
+sun.yuxiang@outlook.com
 
