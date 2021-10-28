@@ -210,5 +210,5 @@ if __name__ == '__main__':
         print('saving check point %s: ' % checkpoint_model_file)
         torch.save(model.state_dict(), checkpoint_model_file)
 
-        testing(epo, model, test_loader)
+        testing(epo, model, test_loader) # testing is just for your reference, you can comment this line during training
         scheduler.step() # if using pytorch 1.1 or above, please put this statement here
