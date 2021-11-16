@@ -64,7 +64,7 @@ if __name__ == '__main__':
         own_state[name].copy_(param)  
     print('done!')
 
-    batch_size = 1 # do not change this parameter!	
+    batch_size = 1
     test_dataset  = MF_dataset(data_dir=args.data_dir, split=args.dataset_split, input_h=args.img_height, input_w=args.img_width)
     test_loader  = DataLoader(
         dataset     = test_dataset,
