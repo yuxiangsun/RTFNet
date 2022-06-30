@@ -1,6 +1,6 @@
 # RTFNet-pytorch
 
-This is the official pytorch implementation of [RTFNet: RGB-Thermal Fusion Network for Semantic Segmentation of Urban Scenes](https://github.com/yuxiangsun/RTFNet/blob/master/doc/RAL2019_RTFNet.pdf) (IEEE RAL). Some of the codes are borrowed from [MFNet](https://github.com/haqishen/MFNet-pytorch). Note that our implementations of the evaluation metrics (Acc and IoU) are different from those in MFNet. In addition, we consider the unlabelled class when computing the metrics.
+This is the official pytorch implementation of [RTFNet: RGB-Thermal Fusion Network for Semantic Segmentation of Urban Scenes](https://github.com/yuxiangsun/RTFNet/blob/master/doc/RAL2019_RTFNet.pdf) (IEEE RA-L). Some of the codes are borrowed from [MFNet](https://github.com/haqishen/MFNet-pytorch). Note that our implementations of the evaluation metrics (Acc and IoU) are different from those in MFNet. In addition, we consider the unlabelled class when computing the metrics.
 
 The current version supports Python>=3.8.10, CUDA>=11.3.0 and PyTorch>=1.11.0, but it should work fine with lower versions of CUDA and PyTorch. Please modify the `Dockerfile` as you want. If you do not use docker, please manually install the dependencies listed in the `Dockerfile`.
 
@@ -8,7 +8,7 @@ The current version supports Python>=3.8.10, CUDA>=11.3.0 and PyTorch>=1.11.0, b
   
 ## Introduction
 
-RTFNet is a data-fusion network for semantic segmentation. It consists of two encoders and one decoder. Although RTFNet is designed with RGB-Thermal data, it generalizes well for RGB-D data. Please take a look at the [paper](https://doi.org/10.1109/LRA.2019.2932874).
+RTFNet is a data-fusion network for semantic segmentation using RGB and thermal images. It consists of two encoders and one decoder.
  
 ## Dataset
  
